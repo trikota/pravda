@@ -10,10 +10,27 @@ namespace Expload.Pravda {
 
     // Access to the storage
     public class Mapping<K, V> {
-       public V get(K key) { return default(V); }
-       public bool exists(K key) { return false; }
-       public void put(K key, V value) { return; }
-       public V getDefault(K key, V def) { return default(V); }
+        
+        public V this[int K] { 
+            get { 
+                return default(V);
+            } 
+            set {
+                return;
+            }
+        }
+        
+
+        // Checks the specified key is present in the mapping.
+        public bool ContainsKey(K key) {
+            return false;
+        }
+        
+        // Gets the value associated with the specified key.
+        // If key is not fount returns defaultValue.
+        public V GetOrDefault(K key, V defaultValue) { 
+            return default(V); 
+        }
     }
 
     public class Info {
@@ -40,21 +57,26 @@ namespace Expload.Pravda {
 
     // Immutable array of bytes
     public class Bytes {
-       // Get the empty byte array
-       public static Bytes EMPTY = null;
-       // Get the void address (32 zero bytes)
-       public static Bytes VOID_ADDRESS = null;
+        // Get the empty byte array
+        public static Bytes EMPTY = null;
+        // Get the void address (32 zero bytes)
+        public static Bytes VOID_ADDRESS = null;
 
-       public Bytes(params byte[] bytes) {}
+        public Bytes(params byte[] bytes) {}
 
-       // Get the i-th byte
-       public byte this[int i] { get { return 0; } set { return; } }
-       // Get the sub-array
-       public Bytes Slice(int start, int length) { return null; }
-       // Concatenate two Bytes
-       public Bytes Concat(Bytes other) { return null; }
-       // Length of byte array
-       public int Length() { return 0; }
+        // Get the i-th byte
+        public byte this[int i] { 
+            get { 
+               return 0; 
+            }
+        }
+
+        // Get the sub-array
+        public Bytes Slice(int start, int length) { return null; }
+        // Concatenate two Bytes
+        public Bytes Concat(Bytes other) { return null; }
+        // Length of byte array
+        public int Length() { return 0; }
     }
 
     public class StdLib {
